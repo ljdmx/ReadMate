@@ -1,5 +1,5 @@
 
-export type View = 'home' | 'selection' | 'focus' | 'discovery';
+export type View = 'home' | 'selection' | 'focus' | 'discovery' | 'synthesis';
 
 export type AIModel = 'gemini' | 'openai' | 'grok' | 'deepseek' | 'doubao';
 
@@ -21,6 +21,9 @@ export interface Translation {
   discovery: string;
   discoverySub: string;
   discoveryDesc: string;
+  synthesis: string;
+  synthesisSub: string;
+  synthesisDesc: string;
   lastRead: string;
   
   // Selection View
@@ -128,7 +131,6 @@ export interface Translation {
   };
 
   // Synthesis View
-  synthesisDesc: string;
   authorViewpoint: string;
   myUnderstanding: string;
   differenceHint: string;

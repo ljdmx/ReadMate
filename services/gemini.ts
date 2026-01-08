@@ -7,6 +7,13 @@ const getAIClient = () => {
 };
 
 /**
+ * Helper to clean Markdown code blocks from AI strings for safer JSON parsing.
+ */
+const cleanJsonString = (str: string) => {
+  return str.replace(/```json/g, "").replace(/```/g, "").trim();
+};
+
+/**
  * Generic helper for obtaining text responses from a Gemini model.
  */
 export const getAIResponse = async (prompt: string, model: string = 'gemini-3-flash-preview', systemInstruction?: string) => {
@@ -44,7 +51,7 @@ export const analyzeBook = async (title: string, intent: string, lang: string, m
     }
   });
   try { 
-    return JSON.parse(response.text || "{}"); 
+    return JSON.parse(cleanJsonString(response.text || "{}")); 
   } catch (e) { 
     return null; 
   }
@@ -92,7 +99,7 @@ export const getDiscoveryRecs = async (tags: string[], goals: string, lang: stri
   });
 
   try {
-    return JSON.parse(response.text || "[]");
+    return JSON.parse(cleanJsonString(response.text || "[]"));
   } catch (e) {
     return [];
   }
@@ -121,7 +128,7 @@ export const refineInsight = async (authorView: string, myUnderstanding: string,
     }
   });
   try {
-    return JSON.parse(response.text || "{}");
+    return JSON.parse(cleanJsonString(response.text || "{}"));
   } catch (e) {
     return { refined: myUnderstanding };
   }

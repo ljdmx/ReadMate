@@ -10,23 +10,23 @@ interface HomeViewProps {
 const HomeView: React.FC<HomeViewProps> = ({ t, onNavigate }) => {
   return (
     <main className="flex-1 flex flex-col items-center justify-center py-12 md:py-24 px-6 relative w-full min-h-screen">
-      <div className="w-full max-w-7xl flex flex-col gap-16 md:gap-20 items-center">
+      <div className="w-full max-w-7xl flex flex-col gap-12 md:gap-16 items-center">
         
-        <header className="text-center space-y-6 animate-fade-in-up">
+        <header className="text-center space-y-4 animate-fade-in-up">
           <div className="inline-flex items-center justify-center size-16 md:size-24 bg-white dark:bg-slate-900 rounded-[28px] md:rounded-[40px] shadow-2xl border border-slate-100 dark:border-slate-800 text-primary-500 mb-4 transform hover:rotate-6 transition-transform">
              <span className="material-symbols-outlined text-[40px] md:text-[56px] filled">auto_stories</span>
           </div>
           <div className="space-y-2">
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 dark:text-white">
               {t.title}
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-sm md:text-2xl font-light tracking-[0.2em] uppercase">
+            <p className="text-slate-500 dark:text-slate-400 text-sm md:text-xl font-light tracking-[0.2em] uppercase">
               {t.tagline}
             </p>
           </div>
         </header>
 
-        <nav className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl">
+        <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl">
           <NavCard 
             icon="search_check" 
             title={t.selection} 
@@ -46,6 +46,15 @@ const HomeView: React.FC<HomeViewProps> = ({ t, onNavigate }) => {
             iconColor="text-emerald-500"
           />
           <NavCard 
+            icon="psychology" 
+            title={t.synthesis} 
+            subtitle={t.synthesisSub}
+            desc={t.synthesisDesc}
+            onClick={() => onNavigate('synthesis')} 
+            color="bg-purple-50 dark:bg-purple-900/20"
+            iconColor="text-purple-500"
+          />
+          <NavCard 
             icon="auto_awesome_motion" 
             title={t.discovery} 
             subtitle={t.discoverySub}
@@ -63,7 +72,7 @@ const HomeView: React.FC<HomeViewProps> = ({ t, onNavigate }) => {
 const NavCard: React.FC<{ icon: string, title: string, subtitle: string, desc: string, onClick: () => void, color: string, iconColor: string }> = ({ icon, title, subtitle, desc, onClick, color, iconColor }) => (
   <div 
     onClick={onClick}
-    className="group relative flex flex-col items-start p-6 md:p-8 rounded-[32px] md:rounded-[40px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-2xl hover:border-primary-500/20 dark:hover:border-primary-500/40 transition-all duration-500 cursor-pointer min-h-[240px] md:min-h-[300px] active:scale-[0.97]"
+    className="group relative flex flex-col items-start p-6 md:p-8 rounded-[32px] md:rounded-[40px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-2xl hover:border-primary-500/20 dark:hover:border-primary-500/40 transition-all duration-500 cursor-pointer min-h-[280px] md:min-h-[320px] active:scale-[0.97]"
   >
     <div className={`size-12 md:size-14 rounded-2xl md:rounded-2xl ${color} flex items-center justify-center ${iconColor} group-hover:scale-110 transition-all duration-500 shadow-sm mb-6`}>
       <span className="material-symbols-outlined text-[24px] md:text-[28px]">

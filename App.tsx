@@ -6,6 +6,7 @@ import HomeView from './views/HomeView';
 import SelectionView from './views/SelectionView';
 import FocusView from './views/FocusView';
 import DiscoveryView from './views/DiscoveryView';
+import SynthesisView from './views/SynthesisView';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
@@ -33,6 +34,7 @@ const App: React.FC = () => {
       case 'selection': return <SelectionView {...props} />;
       case 'focus': return <FocusView {...props} />;
       case 'discovery': return <DiscoveryView {...props} />;
+      case 'synthesis': return <SynthesisView {...props} />;
       default: return <HomeView t={t} onNavigate={setCurrentView} />;
     }
   };
