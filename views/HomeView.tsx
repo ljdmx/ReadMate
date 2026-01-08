@@ -26,7 +26,7 @@ const HomeView: React.FC<HomeViewProps> = ({ t, onNavigate }) => {
           </div>
         </header>
 
-        <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl">
+        <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
           <NavCard 
             icon="search_check" 
             title={t.selection} 
@@ -44,15 +44,6 @@ const HomeView: React.FC<HomeViewProps> = ({ t, onNavigate }) => {
             onClick={() => onNavigate('focus')} 
             color="bg-emerald-50 dark:bg-emerald-900/20"
             iconColor="text-emerald-500"
-          />
-          <NavCard 
-            icon="psychology" 
-            title={t.synthesis} 
-            subtitle={t.synthesisSub}
-            desc={t.synthesisDesc}
-            onClick={() => onNavigate('synthesis')} 
-            color="bg-purple-50 dark:bg-purple-900/20"
-            iconColor="text-purple-500"
           />
           <NavCard 
             icon="auto_awesome_motion" 
