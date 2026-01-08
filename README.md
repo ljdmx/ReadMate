@@ -1,20 +1,49 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 阅伴 (ReadMate) - 导向式 AI 阅读助理
 
-# Run and deploy your AI Studio app
+ReadMate 是一款专注于认知提升的 AI 阅读伴侣。它不是内容的分发者，而是读者思维的脚手架，旨在帮助知识型工作者在信息洪流中高效决策、深度理解并沉淀知识。
 
-This contains everything you need to run your app locally.
+## 1. 产品愿景
+成为领先的认知辅助型 AI 阅读工具，通过“读前决策 / 读中理解 / 读后留存 / 成长推荐”四大价值链条，降低用户的认知负荷，提升长期的阅读理解与记忆效率。
 
-View your app in AI Studio: https://ai.studio/apps/drive/1aby_n-Fh761Q9__QKzCmFRyRyox_TL8B
+## 2. 核心功能模块
 
-## Run Locally
+### 🚀 读前决策 (Selection)
+*   **功能描述**：在投入精力前分析书籍价值。
+*   **交互逻辑**：输入书名与阅读意图，AI 结合意图与时间预算，提供适配度评分及“解决/不解决什么问题”的预判。
 
-**Prerequisites:**  Node.js
+### 📖 读中理解 (Focus Mode)
+*   **功能描述**：AI 辅助深度阅读。
+*   **核心特性**：
+    *   支持 PDF/EPUB 文本提取。
+    *   **智能上下文感知**：AI 自动获取当前书籍的章节大纲，对话更有针对性。
+    *   **选中文本交互**：提供重述、简化、找错及 AI 对话功能。
+    *   **沉浸式体验**：支持多种阅读主题（羊皮纸、夜间、自然）及全屏模式。
 
+### 💡 智能推荐 (Discovery)
+*   **功能描述**：规划个性化知识成长路径。
+*   **核心特性**：
+    *   **兴趣标签云**：支持 30+ 细分领域标签。
+    *   **目标导向推荐**：基于用户设置的“能力提升方向”生成定制化书单。
+    *   **推荐理由透明化**：显示匹配度评分、核心价值及关键洞察。
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 3. 技术架构
+*   **前端框架**: React 19 + TypeScript
+*   **视觉样式**: Tailwind CSS (极简主义、高级感、响应式)
+*   **AI 引擎**: Google Gemini API (`@google/genai`)
+    *   使用 `gemini-3-flash-preview` 进行快速响应。
+    *   使用 `gemini-3-pro-preview` 处理复杂逻辑。
+*   **解析工具**: PDF.js (PDF 提取), JSZip (EPUB 结构解析)。
+
+## 4. 产品边界与非功能要求
+*   **不代读**：坚守认知辅助定位，不代用户完成阅读行为。
+*   **保护版权**：不提供原始书籍分发，AI 生成内容严格受限。
+*   **隐私安全**：用户阅读轨迹与笔记仅存储于本地/加密环境。
+*   **可信 AI**：AI 输出标注置信度，鼓励用户独立思考而非盲从。
+
+## 5. 快速开始
+1.  确保环境中有有效的 `process.env.API_KEY`。
+2.  在首页选择您心仪的 AI 模型。
+3.  通过“读前决策”评估新书，或直接在“专注阅读”中导入电子书。
+
+---
+*更新日期：2024年10月28日 | 版本：V1.2*
