@@ -45,50 +45,64 @@ const App: React.FC = () => {
           {/* Global Toolbar - ONLY visible on home view as requested */}
           {currentView === 'home' && (
             <div className="fixed top-6 right-6 z-[100] flex items-center gap-3 animate-fade-in">
-              <div className="relative">
-                <button 
-                  onClick={() => setIsModelMenuOpen(!isModelMenuOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-xl border border-slate-200 dark:border-slate-700 hover:scale-105 transition-all group"
-                >
-                  <span className="material-symbols-outlined text-primary-500 text-[20px]">
-                    {models.find(m => m.id === selectedModel)?.icon}
-                  </span>
-                  <span className="text-sm font-bold hidden sm:inline text-slate-700 dark:text-slate-200">
-                    {models.find(m => m.id === selectedModel)?.name.split(' ')[0]}
-                  </span>
-                  <span className="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-primary-500 transition-colors">
-                    expand_more
-                  </span>
-                </button>
+              <div className="flex items-center gap-2">
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsModelMenuOpen(!isModelMenuOpen)}
+                    className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-xl border border-slate-200 dark:border-slate-700 hover:scale-105 transition-all group"
+                  >
+                    <span className="material-symbols-outlined text-primary-500 text-[20px]">
+                      {models.find(m => m.id === selectedModel)?.icon}
+                    </span>
+                    <span className="text-sm font-bold hidden sm:inline text-slate-700 dark:text-slate-200">
+                      {models.find(m => m.id === selectedModel)?.name.split(' ')[0]}
+                    </span>
+                    <span className="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-primary-500 transition-colors">
+                      expand_more
+                    </span>
+                  </button>
 
-                {isModelMenuOpen && (
-                  <>
-                    <div className="fixed inset-0 z-[-1]" onClick={() => setIsModelMenuOpen(false)}></div>
-                    <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 p-2 animate-slide-down">
-                      <p className="px-3 py-2 text-[10px] font-black uppercase tracking_widest text-slate-400">
-                        {t.modelSelect}
-                      </p>
-                      {models.map((model) => (
-                        <button
-                          key={model.id}
-                          onClick={() => {
-                            setSelectedModel(model.id);
-                            setIsModelMenuOpen(false);
-                          }}
-                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${
-                            selectedModel === model.id 
-                              ? 'bg-primary-500/10 text-primary-500 font-bold' 
-                              : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
-                          }`}
-                        >
-                          <span className="material-symbols-outlined text-[20px]">{model.icon}</span>
-                          <span>{model.name}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
+                  {isModelMenuOpen && (
+                    <>
+                      <div className="fixed inset-0 z-[-1]" onClick={() => setIsModelMenuOpen(false)}></div>
+                      <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 p-2 animate-slide-down">
+                        <p className="px-3 py-2 text-[10px] font-black uppercase tracking_widest text-slate-400">
+                          {t.modelSelect}
+                        </p>
+                        {models.map((model) => (
+                          <button
+                            key={model.id}
+                            onClick={() => {
+                              setSelectedModel(model.id);
+                              setIsModelMenuOpen(false);
+                            }}
+                            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${
+                              selectedModel === model.id 
+                                ? 'bg-primary-500/10 text-primary-500 font-bold' 
+                                : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                            }`}
+                          >
+                            <span className="material-symbols-outlined text-[20px]">{model.icon}</span>
+                            <span>{model.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Free Books Link */}
+                <a 
+                  href="https://github.com/jbiaojerry/ebook-treasure-chest?tab=readme-ov-file" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center size-10 bg-white dark:bg-slate-800 rounded-full shadow-xl border border-slate-200 dark:border-slate-700 text-primary-500 hover:scale-110 transition-all"
+                  title={lang === 'zh' ? '获取免费图书' : 'Get Free Books'}
+                >
+                  <span className="material-symbols-outlined text-[22px]">local_library</span>
+                </a>
               </div>
+
               <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
               <button 
                 onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
